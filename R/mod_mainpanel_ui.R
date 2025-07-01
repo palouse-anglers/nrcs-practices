@@ -1,4 +1,3 @@
-
 # UI Module for main panel
 mainPanelUI <- function(id) {
   ns <- NS(id)
@@ -9,18 +8,31 @@ mainPanelUI <- function(id) {
       card(
         card_header("Conservation Districts Map"),
         card_body(
-          # Placeholder for map content
           mod_map_ui(ns("map"))
         )
       )
     ),
     nav_panel(
-      title = "Tables",
+      title = "Watersheds",
       card(
         card_header("Data Tables"),
         card_body(
-          # Placeholder for table content
-          tableOutput(ns("data_table"))
+          DT::dataTableOutput(ns("data_table"))
+        )
+      )
+    ),
+    nav_panel(
+      title = "NRCS Data",
+      card(
+        card_header("Console Logs"),
+        card_body(
+          verbatimTextOutput(ns("console_output"))
+        )
+      ),
+      card(
+        card_header("Cleaned NRCS Data Preview"),
+        card_body(
+          DT::dataTableOutput(ns("data_preview"))
         )
       )
     )

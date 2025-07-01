@@ -1,14 +1,19 @@
 library(shiny)
 library(bslib)
+library(sf)
+library(leaflet)
+library(dplyr)
 library(shinyWidgets)
 library(middlesnake)
 
+
+options(shiny.maxRequestSize = 90*1024^2)
 
 purrr::walk(list.files("R", full.names = TRUE, pattern = "\\.R$"), source)
 
 
 district_names <- middlesnake::swcd_boundaries %>%
-  pull(CNSVDST) %>%
+  pull(swcd_name) %>%
   unique()
 
 # Main UI
@@ -32,9 +37,13 @@ server <- function(input, output, session) {
 
   uploaded_file <- sidebar_data$uploaded_file
   selected_districts <- sidebar_data$selected_districts
+  huc_data <- sidebar_data$huc_data
 
   # Call main panel module server with sidebar data
-  mainPanelServer("main_module", sidebar_data,selected_districts)
+  mainPanelServer("main_module",
+                  sidebar_data,
+                  selected_districts,
+                  huc_data)
 }
 
 # Run the app

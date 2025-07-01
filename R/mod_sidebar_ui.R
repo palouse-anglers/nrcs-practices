@@ -25,6 +25,7 @@ mod_sidebar_ui <- function(id,districts) {
         noneSelectedText = "No districts selected"
       )
     ),
-    mod_assign_huc_ui(ns("assign_huc"))
+    mod_assign_huc_ui(ns("assign_huc")),
+    mod_clean_nrcs_ui(ns("clean_nrcs"))
   )
 }

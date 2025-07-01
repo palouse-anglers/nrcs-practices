@@ -2,6 +2,9 @@ mod_assign_huc_server <- function(id, selected_districts) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
+    # Reactive value to store huc data
+    huc_data <- reactiveVal()
+
     # Show button only if at least one district is selected
     output$show_button <- renderUI({
       req(selected_districts())
@@ -13,30 +16,45 @@ mod_assign_huc_server <- function(id, selected_districts) {
     observeEvent(input$get_hucs, {
       req(selected_districts())
 
+      withProgress(
+        message = "Retrieving HUC data...",
+        detail = "Please wait while data is downloaded.",
+        value = 0.3, {
 
-      cleaned_names <- sub(" CD$", "", selected_districts())
-      cleaned_names <- sub(" County$", "", cleaned_names)
+          huc_df <- purrr::map_dfr(selected_districts(), ~{
+            incProgress(1 / length(selected_districts()), detail = paste("Getting", .x, "watersheds"))
+            middlesnake::get_huc_by_cd(district_name = .x)
+          })
 
-      print(cleaned_names)
+          # Save to reactiveVal
+          huc_data(huc_df)
 
-      # Use purrr to run function for each selected district
-      huc_df <- middlesnake::get_huc_by_cd(
-        district_name = cleaned_names)
+          # Summarize
+          summary_tbl <- huc_df %>%
+            dplyr::group_by(swcd_name) %>%
+            dplyr::summarise(n_huc12 = dplyr::n_distinct(huc12), .groups = "drop")
 
+          # summary message
+          output$summary <- renderUI({
+            req(summary_tbl)
+            req(huc_data())
 
-      # Summarize: number of unique HUC12s per district
-      summary_tbl <- huc_df %>%
-        dplyr::group_by(swcd_name) %>%
-        dplyr::summarise(n_huc12 = dplyr::n_distinct(huc12), .groups = "drop")
+            html_list <- paste0(
+              "<ul>",
+              paste0(
+                "<li><strong>", summary_tbl$swcd_name, ":</strong> ",
+                summary_tbl$n_huc12, " watersheds</li>",
+                collapse = "\n"
+              ),
+              "</ul>"
+            )
 
-      # Print message
-      output$summary <- renderPrint({
-        cat("Unique HUC12s per district:\n")
-        print(summary_tbl)
-      })
-
-      # Optionally return data
-      # return(reactive(huc_df))
+            HTML(paste0("<div><h5>Watersheds Loaded</h5>", html_list, "</div>"))
+          })
+        }
+      )
     })
+
+    return(huc_data)
   })
 }

@@ -1,42 +1,40 @@
 # Server Module for main panel
-mainPanelServer <- function(id, sidebar_data,selected_districts) {
+mainPanelServer <- function(id, sidebar_data,selected_districts,huc_data) {
   moduleServer(id, function(input, output, session) {
 
 
-    mod_map_server("map", selected_districts = selected_districts)
+    mod_map_server("map", selected_districts = selected_districts,huc_data)
 
     # Table output
-    output$data_table <- renderTable({
-      # Create sample data based on uploaded file and selected districts
-      if (!is.null(sidebar_data$uploaded_file())) {
-        file_info <- data.frame(
-          "File Name" = sidebar_data$uploaded_file()$name,
-          "File Size" = paste(round(sidebar_data$uploaded_file()$size / 1024, 2), "KB"),
-          "Upload Date" = Sys.Date()
-        )
-      } else {
-        file_info <- data.frame(
-          "Status" = "No file uploaded"
-        )
-      }
-
-      if (!is.null(sidebar_data$selected_districts()) &&
-          length(sidebar_data$selected_districts()) > 0) {
-        districts_info <- data.frame(
-          "Selected Districts" = sidebar_data$selected_districts(),
-          "Status" = "Active"
-        )
-
-        # Combine file and district info if both exist
-        if (nrow(file_info) > 1 || names(file_info)[1] != "Status") {
-          return(list("File Information" = file_info,
-                      "District Information" = districts_info))
-        } else {
-          return(districts_info)
-        }
-      } else {
-        return(file_info)
-      }
+    output$data_table <- DT::renderDT({
+    req(huc_data())
+    huc_data()
     })
-  })
+
+
+
+# logs
+    output$console_output <- renderText({
+      req(sidebar_data$clean_output$logs())
+      sidebar_data$clean_output$logs()
+    })
+
+# cleaned data
+    output$data_preview <- DT::renderDT({
+      req(sidebar_data$clean_output$data())
+      DT::datatable(
+        sidebar_data$clean_output$data(),
+        extensions = "Buttons",
+        options = list(
+          pageLength = 50,
+          dom = 'Bfrtip',
+          buttons = c("copy", "csv", "excel", "pdf", "print")
+        ),
+        class = "stripe hover"
+      )
+    })
+
+
+
+    })
 }
