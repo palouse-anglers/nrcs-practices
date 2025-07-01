@@ -5,7 +5,7 @@ library(leaflet)
 library(dplyr)
 library(shinyWidgets)
 library(middlesnake)
-
+library(nhdplusTools)
 
 options(shiny.maxRequestSize = 90*1024^2)
 
