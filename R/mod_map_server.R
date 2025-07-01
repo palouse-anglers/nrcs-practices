@@ -36,7 +36,7 @@ mod_map_server <- function(id, selected_districts,huc_data) {
       filtered <- all_boundaries[all_boundaries$swcd_name %in% selected_districts(), ]
 
       leafletProxy(ns("map")) %>%
-        clearGroup("selected") %>%
+        clearGroup("Selected") %>%
         addPolygons(
           data = filtered,
           fillColor = "red",

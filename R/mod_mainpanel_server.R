@@ -14,9 +14,10 @@ mainPanelServer <- function(id, sidebar_data,selected_districts,huc_data) {
 
 
 # logs
-    output$console_output <- renderText({
+    output$console_output <- renderPrint({
       req(sidebar_data$clean_output$logs())
-      sidebar_data$clean_output$logs()
+      cat(sidebar_data$clean_output$logs(), sep = "\n")
+
     })
 
 # cleaned data
