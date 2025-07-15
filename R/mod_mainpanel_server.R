@@ -8,7 +8,7 @@ mainPanelServer <- function(id, sidebar_data,selected_districts,huc_data) {
     # Table output
     output$data_table <- DT::renderDT({
     req(huc_data())
-    huc_data()
+    datahuc_data()
     })
 
 
@@ -27,8 +27,9 @@ mainPanelServer <- function(id, sidebar_data,selected_districts,huc_data) {
         sidebar_data$clean_output$data(),
         extensions = "Buttons",
         options = list(
-          pageLength = 50,
-          dom = 'Bfrtip',
+          lengthMenu=list(c(25,50,100,-1),c("25","50","100","All")),
+          pageLength = -1,
+          dom = 'Blfrtip',
           buttons = c("copy", "csv", "excel", "pdf", "print")
         ),
         class = "stripe hover"
