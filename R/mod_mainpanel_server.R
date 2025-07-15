@@ -29,7 +29,7 @@ mainPanelServer <- function(id, sidebar_data,selected_districts,huc_data) {
         options = list(
           lengthMenu=list(c(25,50,100,-1),c("25","50","100","All")),
           pageLength = -1,
-          dom = 'Blfrtip',
+          dom = 'lBfrtip',
           buttons = c("copy", "csv", "excel", "pdf", "print")
         ),
         class = "stripe hover"
