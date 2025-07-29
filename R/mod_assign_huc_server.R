@@ -13,6 +13,9 @@ mod_assign_huc_server <- function(id, selected_districts) {
       }
     })
 
+
+
+
     observeEvent(input$get_hucs, {
       req(selected_districts())
 

@@ -30,12 +30,22 @@ mainPanelServer <- function(id, sidebar_data,selected_districts,huc_data) {
           lengthMenu=list(c(25,50,100,-1),c("25","50","100","All")),
           pageLength = -1,
           dom = 'lBfrtip',
-          buttons = c("copy", "csv", "excel", "pdf", "print")
+          buttons = c("copy","pdf", "print")
         ),
         class = "stripe hover"
       )
     })
 
+
+    output$download_clean_data <- downloadHandler(
+      filename = function() {
+        paste0("cleaned_nrcs_data_", Sys.Date(), ".xlsx")
+      },
+      content = function(file) {
+        df <- sidebar_data$clean_output$data()
+        openxlsx::write.xlsx(df, file = file)
+      }
+    )
 
 
     })

@@ -18,6 +18,7 @@ district_names <- middlesnake::swcd_boundaries %>%
 
 # Main UI
 ui <- page_sidebar(
+  shinyjs::useShinyjs(),
   title = "NRCS Practices Calculator",
   theme = bs_theme(version = 5, bootswatch = "flatly"),
 

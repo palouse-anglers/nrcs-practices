@@ -17,7 +17,7 @@ mod_sidebar_ui <- function(id,districts) {
       label = "Select Conservation District(s)",
       choices = districts,
       selected = NULL,
-      multiple = FALSE,
+      multiple = TRUE,
       options = pickerOptions(
         actionsBox = FALSE,
         selectAllText = "Select All",

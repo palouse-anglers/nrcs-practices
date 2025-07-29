@@ -26,12 +26,21 @@ mainPanelUI <- function(id) {
       card(
         card_header("Console Logs"),
         card_body(
-          verbatimTextOutput(ns("console_output"))
-        )
+          bslib::accordion(
+            id = ns("nrcs_data_accordion"),
+            bslib::accordion_panel(
+          "View Cleaning Logs",
+          verbatimTextOutput(ns("console_output")),
+          value = "logs_panel"
+            )
+          )
+         )
       ),
-      card(
+      card(full_screen = TRUE,
+
         card_header("Cleaned NRCS Data Preview"),
         card_body(
+          downloadButton(ns("download_clean_data"), "Download Cleaned NRCS Data"),
           DT::dataTableOutput(ns("data_preview"))
         )
       )
