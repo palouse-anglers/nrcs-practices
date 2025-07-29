@@ -2235,6 +2235,40 @@
         "Archs": "x64"
       }
     },
+    "openxlsx": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Type": "Package",
+        "Package": "openxlsx",
+        "Title": "Read, Write and Edit xlsx Files",
+        "Version": "4.2.8",
+        "Date": "2025-01-25",
+        "Authors@R": "\n    c(person(given = \"Philipp\",\n             family = \"Schauberger\",\n             role = \"aut\",\n             email = \"philipp@schauberger.co.at\"),\n      person(given = \"Alexander\",\n             family = \"Walker\",\n             role = \"aut\",\n             email = \"Alexander.Walker1989@gmail.com\"),\n      person(given = \"Luca\",\n             family = \"Braglia\",\n             role = \"ctb\"),\n      person(given = \"Joshua\",\n             family = \"Sturm\",\n             role = \"ctb\"),\n      person(given = \"Jan Marvin\",\n             family = \"Garbuszus\",\n             role = c(\"ctb\", \"cre\"),\n             email = \"jan.garbuszus@ruhr-uni-bochum.de\"),\n      person(given = \"Jordan Mark\",\n             family = \"Barbone\",\n             role = \"ctb\",\n             email = \"jmbarbone@gmail.com\",\n             comment = c(ORCID = \"0000-0001-9788-3628\")),\n      person(given = \"David\",\n             family = \"Zimmermann\",\n             role = \"ctb\",\n             email = \"david_j_zimmermann@hotmail.com\"),\n      person(given = \"Reinhold\",\n             family = \"Kainhofer\",\n             role = \"ctb\",\n             email = \"reinhold@kainhofer.com\"))",
+        "Description": "Simplifies the creation of Excel .xlsx files by providing a\n    high level interface to writing, styling and editing worksheets.\n    Through the use of 'Rcpp', read/write times are comparable to the\n    'xlsx' and 'XLConnect' packages with the added benefit of removing the\n    dependency on Java.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://ycphs.github.io/openxlsx/index.html,\nhttps://github.com/ycphs/openxlsx",
+        "BugReports": "https://github.com/ycphs/openxlsx/issues",
+        "Depends": "R (>= 3.3.0)",
+        "Imports": "grDevices, methods, Rcpp, stats, stringi, utils, zip",
+        "Suggests": "curl, formula.tools, knitr, rmarkdown, testthat",
+        "LinkingTo": "Rcpp",
+        "VignetteBuilder": "knitr",
+        "Encoding": "UTF-8",
+        "Language": "en-US",
+        "RoxygenNote": "7.3.2",
+        "Collate": "'CommentClass.R' 'HyperlinkClass.R' 'RcppExports.R'\n'class_definitions.R' 'StyleClass.R' 'WorkbookClass.R'\n'asserts.R' 'baseXML.R' 'borderFunctions.R' 'build_workbook.R'\n'chartsheet_class.R' 'conditional_formatting.R'\n'data-fontSizeLookupTables.R' 'helperFunctions.R'\n'loadWorkbook.R' 'onUnload.R' 'openXL.R' 'openxlsx-package.R'\n'openxlsx.R' 'openxlsxCoerce.R' 'readWorkbook.R'\n'setWindowSize.R' 'sheet_data_class.R' 'utils.R'\n'workbook_column_widths.R' 'workbook_read_workbook.R'\n'workbook_write_data.R' 'worksheet_class.R' 'wrappers.R'\n'writeData.R' 'writeDataTable.R' 'writexlsx.R' 'zzz.R'",
+        "LazyData": "true",
+        "NeedsCompilation": "yes",
+        "Packaged": "2025-01-25 19:28:01 UTC; janmarvingarbuszus",
+        "Author": "Philipp Schauberger [aut],\n  Alexander Walker [aut],\n  Luca Braglia [ctb],\n  Joshua Sturm [ctb],\n  Jan Marvin Garbuszus [ctb, cre],\n  Jordan Mark Barbone [ctb] (<https://orcid.org/0000-0001-9788-3628>),\n  David Zimmermann [ctb],\n  Reinhold Kainhofer [ctb]",
+        "Maintainer": "Jan Marvin Garbuszus <jan.garbuszus@ruhr-uni-bochum.de>",
+        "Repository": "CRAN",
+        "Date/Publication": "2025-01-25 20:30:02 UTC",
+        "Built": "R 4.4.3; x86_64-w64-mingw32; 2025-03-17 02:25:10 UTC; windows",
+        "Archs": "x64"
+      }
+    },
     "pbapply": {
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com",
@@ -2923,6 +2957,33 @@
         "Repository": "CRAN",
         "Date/Publication": "2024-09-23 07:40:02 UTC",
         "Built": "R 4.4.2; ; 2025-01-04 03:00:32 UTC; windows"
+      }
+    },
+    "shinyjs": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "shinyjs",
+        "Title": "Easily Improve the User Experience of Your Shiny Apps in Seconds",
+        "Version": "2.1.0",
+        "Authors@R": "person(\"Dean\", \"Attali\", \n    email = \"daattali@gmail.com\",\n    role = c(\"aut\", \"cre\"),\n    comment= c(ORCID=\"0000-0002-5645-3493\"))",
+        "Description": "Perform common useful JavaScript operations in Shiny apps that will\n    greatly improve your apps without having to know any JavaScript. Examples\n    include: hiding an element, disabling an input, resetting an input back to\n    its original value, delaying code execution by a few seconds, and many more\n    useful functions for both the end user and the developer. 'shinyjs' can also\n    be used to easily call your own custom JavaScript functions from R.",
+        "URL": "https://deanattali.com/shinyjs/",
+        "BugReports": "https://github.com/daattali/shinyjs/issues",
+        "Depends": "R (>= 3.1.0)",
+        "Imports": "digest (>= 0.6.8), jsonlite, shiny (>= 1.0.0)",
+        "Suggests": "htmltools (>= 0.2.9), knitr (>= 1.7), rmarkdown, shinyAce,\nshinydisconnect, testthat (>= 0.9.1)",
+        "License": "MIT + file LICENSE",
+        "VignetteBuilder": "knitr",
+        "RoxygenNote": "7.1.1",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-12-21 11:32:22 UTC; Dean-X1C",
+        "Author": "Dean Attali [aut, cre] (<https://orcid.org/0000-0002-5645-3493>)",
+        "Maintainer": "Dean Attali <daattali@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-12-23 10:10:02 UTC",
+        "Built": "R 4.4.2; ; 2025-01-04 03:00:23 UTC; windows"
       }
     },
     "slippymath": {
@@ -3734,25 +3795,25 @@
   },
   "files": {
     "app.R": {
-      "checksum": "7fcf8da91e554164076ad08b126bb41c"
+      "checksum": "a2ece7169d7c8f00159c0021e0badc65"
     },
     "R/mod_assign_huc_server.R": {
-      "checksum": "424991861c6ac276e6a92ae69233f28d"
+      "checksum": "a2fe532c3d26886a58dc09b1985c117f"
     },
     "R/mod_assign_huc_ui.R": {
       "checksum": "5a486cdd2c444c4ef6d5f2e4fa5449ad"
     },
     "R/mod_clean_nrcs_server.R": {
-      "checksum": "2c419e1cd21a13fc3d163f7c376c8a5f"
+      "checksum": "8f25bff8840e1c47b5c384a29192c102"
     },
     "R/mod_clean_nrcs_ui.R": {
-      "checksum": "fe55e03d85784569884b123153bb693a"
+      "checksum": "56c33a04d18753dc20467e6d722e2de3"
     },
     "R/mod_mainpanel_server.R": {
-      "checksum": "0cc83beef07d6858b60b115700f433bb"
+      "checksum": "d33b487bd2a305d14ed529766c777ff2"
     },
     "R/mod_mainpanel_ui.R": {
-      "checksum": "6ee983e26329a4534d91845663c2cafc"
+      "checksum": "0d2e95486c3b362dc7d7ea3f034f9764"
     },
     "R/mod_map_server.R": {
       "checksum": "e298027375b29c54b904a28fda3e7d80"
@@ -3764,7 +3825,7 @@
       "checksum": "5627896756531cecbd928b8f66b4f407"
     },
     "R/mod_sidebar_ui.R": {
-      "checksum": "9ccf793f6b1237be02f65f2e4daad272"
+      "checksum": "18cdeca648e6d3e379ea4ccb1cc7fd82"
     }
   },
   "users": null
