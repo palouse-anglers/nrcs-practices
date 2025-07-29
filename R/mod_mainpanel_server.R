@@ -8,7 +8,7 @@ mainPanelServer <- function(id, sidebar_data,selected_districts,huc_data) {
     # Table output
     output$data_table <- DT::renderDT({
     req(huc_data())
-    datahuc_data()
+   huc_data()
     })
 
 
